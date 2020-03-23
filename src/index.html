@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/p.png" type="image/png"> 
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <title>Simple-piskel-clone</title>
+
+</head>
+
+<body>
+    <div class="wrapper-landing" id="wrapper-landing">
+        <header class="header-landing">
+            <h2>Simple-piskel-clone</h2>
+        </header>
+        <div class="main-landing">
+            <section class="description-piskel">
+                <p class="description-text">Piskel is a free online editor for animated sprites & pixel art</p>
+                <div class="create-anim">
+                    <p>Create animations in your browser. <i class="fas fa-long-arrow-alt-right"></i></p>
+                    <button class="btn-sprite" id="btn-open-piskel">Create Sprite</button>
+                </div>
+            </section>
+            <section class="advantages-piskel">
+                <div class="properties-piskel-box">
+                    <p class="header-property">Live preview</p>
+                    <p class="property-text">Check a preview of your animation in real time as you draw.</p>
+                    <p class="property-text">Adjust the frame delay on the fly.</p>
+                </div>
+                <div class="properties-piskel-box load-city">
+                    <p class="header-property">Load image</p>
+                    <p class="property-text">Use can choose the image of any city.</p>
+                    <p class="property-text">It is also possible to make the image black and white</p>
+                </div>
+            </section>
+            <div class="properties-piskel">
+                <p class="properties-text">And also the choice of any color, a convenient set of tools for drawing,
+                    easy resizing of the image and the number of frames, your Google account to sign in.</p>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-piskel" id="wrapper-piskel">
+        <header class="header-piskel">
+            <div class="header-nav">
+                <nav><i class="fas fa-bars"></i></nav>
+                <h1>Simple-piskel-clone</h1>
+            </div>
+            <div class="header-log">
+                <div class="log-output">
+                    <img class="img-avatar" id="img-avatar" src="#" alt="avatar" hidden>
+                    <p class="login-user" id="login-user" hidden></p>
+                </div>
+                <button class="btn-login" id="login">Log in</button>
+                <button class="btn-login" id="logout" hidden>Log out</button>
+            </div>
+        </header>
+        <main class="main-piskel">
+            <div class="tools">
+                <ul class="tools-list" id="list-tools">
+                    <li class="list-item fill" id="fill">
+                        <i class="tools fas fa-fill-drip"></i>
+                        <span class="item-text">Paint bucket</span>
+                    </li>
+                    <li class="list-item choose" id="choose">
+                        <i class="tools fas fa-eye-dropper"></i>
+                        <span class="item-text">Choose color</span>
+                    </li>
+                    <li class="list-item pencil selected" id="pencil">
+                        <div>
+                            <i class="tools fas fa-pencil-alt"></i>
+                            <span class="item-text">Pencil</span>
+                        </div>
+                    </li>
+                    <li class="list-item" id="line">
+                        <i class="tools fas fa-pencil-ruler"></i>
+                        <span class="item-text">Draw line</span>
+                    </li>
+                    <li class="list-item eraser" id="eraser">
+                        <i class="tools fas fa-eraser"></i>
+                        <span class="item-text">Eraser</span>
+                    </li>
+                </ul>
+                <div class="radio-btn-size">
+                    <p>Change size pen</p>
+                    <input type="radio" class="input-radio-size" name="size-pencil" value="1" checked>1x
+                    <input type="radio" class="input-radio-size" name="size-pencil" value="2">2x
+                    <input type="radio" class="input-radio-size" name="size-pencil" value="3">3x
+                    <input type="radio" class="input-radio-size" name="size-pencil" value="4">4x
+                </div>
+
+                <ul class="tools-list" id="list-colors">
+                    <li class="list-item">
+                        <label class="label-color" for="select-color">
+                            <input type="color" value="#008000" name="select-color" class="select-color"
+                                id="select-color-canvas">
+                            Current color
+                        </label>
+                    </li>
+                    <li class="list-item prev">
+                        <span class="item-color">
+                            <span class="color-circle prev" id="color-prev"></span>
+                            Prev color
+                        </span>
+                    </li>
+                    <li class="list-item">
+                        <span class="item-color">
+                            <span class="color-circle red" id="color-red"></span>
+                            red
+                        </span>
+                    </li>
+                    <li class="list-item">
+                        <span class="item-color">
+                            <span class="color-circle blue" id="color-blue"></span>
+                            blue
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="frames">
+                <ul class="list-frames" id="list-frames">
+                </ul>
+                <button class="btn-add-frames canvas-btn" id="btn-frames">
+                    <span class="add-frame-plus">+</span>
+                    <span class="add-frame-description">Add new frame</span>
+                </button>
+            </div>
+            <div class="field">
+                <div class="load-location">
+                    <button class="canvas-btn" id="load-img">Load</button>
+                    <label class="label-location" for="select-location">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="select-location" name="select-location" id="select-location">
+                    </label>
+                    <button class="canvas-btn" id="bw-img">B&W</button>
+                </div>
+                <canvas class="canvas" id="canvas" width=512 height=512></canvas>
+                <div class="canvas-btn-wrapper">
+                    <button class="canvas-btn" id="clear-canvas">clear canvas</button>
+                    <label class="label-resizing" for="image-resizing">
+                        <span id="image-resizing-text">Image resizing 512px</span>
+                        <input type="range" class="image-resizing" id="image-resizing" name="image-resizing" min="32"
+                            max="512" step="32" value="512">
+                    </label>
+                    <button class="canvas-btn" id="full-fill-canvas">full fill with selected color</button>
+                </div>
+            </div>
+            <div class="box-anim">
+                <canvas class="anim-canvas" id="anim-canvas" width=200 height=200></canvas>
+                <div class="box-anim-fps">
+                    <label class="label-anim" for="anim-fps" accesskey="s" id="label-anim">1 fps</label>
+                    <input type="range" class="range-anim-fps" id="anim-fps" name="anim-fps" min="1" max="24" step="1"
+                        value="1">
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
